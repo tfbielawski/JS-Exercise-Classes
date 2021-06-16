@@ -1,3 +1,11 @@
+/** *
+ * Tom Bielawski
+ * Lambda Shcool WEB45
+ * Unit 1, Module 4, Day 4
+ * JS Classes
+ * injdex.js
+ * 6/16/2021 
+ * **/
 
 /*
   EXAMPLE TASK:

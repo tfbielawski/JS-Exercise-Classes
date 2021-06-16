@@ -136,23 +136,45 @@ class Car
    
   }
 
+  // //Define the drive method() pass in distance
+  // dive(distance)
+  // {
+  //   //Add miles to what's already on the odometer
+  //   this.odometer += distance;
+  //   //Declare gallonsUsed, assign the result of distance/mpg
+  //   const gallonsUsed = distance / this.milesPerGallon;
+  //   //Subtract gallonsUsed from the tank
+  //   this.tank -= gallonsUsed;
+  //   //If the tank is empty...
+  //   if (this.tank == 0)
+  //   {
+  //     //...Print this
+  //     return `I ran out of fuel ${this.odometer} miles!`;
+  //   }
+  // }
   //Define the drive method() pass in distance
-  dive(distance)
+  drive(distance)
   {
-    //Add miles to what's already on the odometer
+    //Increment the odometer
     this.odometer += distance;
-    //Declare gallonsUsed, assign the result of distance/mpg
-    const gallonsUsed = distance / this.milesPerGallon;
-    //Subtract gallonsUsed from the tank
-    this.tank -= gallonsUsed;
-    //If the tank is empty...
-    if (this.tank == 0)
+    //Assign result of tank gallons * mpg
+    const maximumRange = this.tank * this.milesPerGallon;
+    //If distance is less than the max range...
+    if (distance < maximumRange)
     {
-      //...Print this
-      console.log("I ran out of fuel", "at",  "miles!")
+      
+      //...assign result of the distance / mpg to the tank
+      this.tank -= distance / this.milesPerGallon;
+    }
+    //If distance is more than max range...
+    else if (distance >= maximumRange )
+    {
+      //...assign result of max range / mpg
+      this.tank -= maximumRange / this.milesPerGallon;
+      //Return required string when tank is empty
+      return `I ran out of fuel at ${this.odometer} miles!`
     }
   }
-
 
 }
   
@@ -210,7 +232,7 @@ class Instructor extends Lambdasian
   //Define the constructor, pass in lambdaObject
   constructor(lambdaObject)
   {
-    //Bind to parent with super(), applies parent keys
+    //Bind to parent with super(), applies parent
     super(lambdaObject);
     //Set specialty to this.specialty
     this.specialty = lambdaObject.specialty;
@@ -223,13 +245,13 @@ class Instructor extends Lambdasian
   //Define the demo() method
   demo(subject)
   {
-    return `Today we are learning about ${this.subject}`
+    return `Today we are learning about ${subject}`
   }
 
   //Define the grade() method
   grade(student, subject)
   {
-    return `${student.name} receives a perfect score on ${this.subject}`
+    return `${student.name} receives a perfect score on ${subject}`
   }
 }
 
@@ -256,7 +278,7 @@ class Student extends Lambdasian
   //Define the constructor
   constructor(lambdaObject)
   {
-    //Bind to parent with super(), applies parent keys
+    //Bind to parent with super(), applies parent 
     super(lambdaObject);
     //Assign previousBackground to this.previousBackground
     this.previousBackground = lambdaObject.previousBackground;
@@ -277,13 +299,13 @@ class Student extends Lambdasian
   PRAssignment(subject)
   {
     //Return the required string
-    return `${student.name} has submitted a PR for ${subject}`;
+    return `${this.name} has submitted a PR for ${subject}`;
   }
 
   //Define sprintChallenge() method
-  sprintChallenge()
+  sprintChallenge(subject)
   {
-    return `${student.name} has begun sprint challenge on ${subject}`;
+    return `${this.name} has begun sprint challenge on ${subject}`;
   }
 }
   
@@ -300,8 +322,34 @@ class Student extends Lambdasian
           + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
           + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
   */
- class ProjectManager {
-     
+
+ //Define project manager subclass extending Instructor subclass
+ class ProjectManager extends Instructor 
+ {
+   //Define the constructor
+   constructor(lambdaObject)
+   {
+     //Bind to parent with super(), applies parent
+     super(lambdaObject);
+     //Assign gradClassname to this.gradClassname
+     this.gradClassName = lambdaObject.gradClassName;
+     //Assign favInstructor to this.favInstructor
+     this.favInstructor = lambdaObject.favInstructor;
+   }
+
+   //Define the standup() method
+   standUp(channel)
+   {
+     //Return the required string
+     return `${this.name} announces to ${channel}, @channel standy times!`
+   }
+  
+   //Define the debugsCode() method
+   debugsCode(student, subject)
+   {
+     return `${this.name} debugs ${student.name}'s code on ${subject}`;
+   }
+
  }
   /*
     STRETCH PROBLEM (no tests!)

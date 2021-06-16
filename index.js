@@ -67,7 +67,7 @@ class Person
   eat(edible)
   {
     //If stomach has 10 or fewer...
-    if(this.stomach.length <= 10)
+    if(this.stomach.length < 10)
     {
       //...the person can eat
       this.stomach.push(edible);
@@ -126,20 +126,15 @@ class Car
     this.tank = 0;
     //init the odometer to 0
     this.odometer = 0;
-  };
+  }
 
   //Define the fill method() pass in gallons
   fill(gallons)
   {
     //Add gallons to what's already in the tank
     this.tank += gallons;
-    //If the tank is empty...
-    if (this.tank == 0)
-    {
-      //...Print this
-      console.log("I ran out of fuel", "at",  "miles!")
-    }
-  };
+   
+  }
 
   //Define the drive method() pass in distance
   dive(distance)
@@ -150,7 +145,13 @@ class Car
     const gallonsUsed = distance / this.milesPerGallon;
     //Subtract gallonsUsed from the tank
     this.tank -= gallonsUsed;
-  };
+    //If the tank is empty...
+    if (this.tank == 0)
+    {
+      //...Print this
+      console.log("I ran out of fuel", "at",  "miles!")
+    }
+  }
 
 
 }
@@ -202,9 +203,37 @@ class Lambdasian
           + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
           + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
   */
- class Instructor {
 
- }
+//Define the Instructor subclass
+class Instructor extends Lambdasian
+{  
+  //Define the constructor, pass in lambdaObject
+  constructor(lambdaObject)
+  {
+    //Bind to parent with super(), applies parent keys
+    super(lambdaObject);
+    //Set specialty to this.specialty
+    this.specialty = lambdaObject.specialty;
+    //Set favLanguage to this.favLanguage
+    this.favLanguage = lambdaObject.favLanguage;
+    //Set catchPhrase to this.catchPhrase
+    this.catchPhrase = lambdaObject.catchPhrase;
+  }
+
+  //Define the demo() method
+  demo(subject)
+  {
+    return `Today we are learning about ${this.subject}`
+  }
+
+  //Define the grade() method
+  grade(student, subject)
+  {
+    return `${student.name} receives a perfect score on ${this.subject}`
+  }
+}
+
+
   /*
     TASK 5
       - Write a Student class extending Lambdasian.
@@ -220,9 +249,43 @@ class Lambdasian
           + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
           + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
   */
- class Student {
-     
- }
+
+//Define the student subclass
+class Student extends Lambdasian
+{
+  //Define the constructor
+  constructor(lambdaObject)
+  {
+    //Bind to parent with super(), applies parent keys
+    super(lambdaObject);
+    //Assign previousBackground to this.previousBackground
+    this.previousBackground = lambdaObject.previousBackground;
+    //Assign className to this.classname
+    this.className = lambdaObject.className;
+    //Assign favSubjects to this.favSubjects
+    this.favSubjects = lambdaObject.favSubjects;
+  }
+  
+  //Define listSubjects() method
+  listSubjects()
+  {
+    //Return the required string
+    return `${this.favSubjects}`;
+  }
+
+  //Define PRAssignment() method, pass in subject
+  PRAssignment(subject)
+  {
+    //Return the required string
+    return `${student.name} has submitted a PR for ${subject}`;
+  }
+
+  //Define sprintChallenge() method
+  sprintChallenge()
+  {
+    return `${student.name} has begun sprint challenge on ${subject}`;
+  }
+}
   
   /*
     TASK 6

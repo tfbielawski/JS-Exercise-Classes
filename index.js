@@ -48,7 +48,8 @@ class Airplane {
       - Give instances of Person a method `.toString()`:
           + It should return a string with `name` and `age`. Example: "Mary, 50"
   */
-  
+
+//Define the class
 class Person
 {
   //Define the constructor
@@ -110,10 +111,49 @@ class Person
       - A car which runs out of `fuel` while driving can't drive any more distance:
           + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
   */
-  
- class Car {
-    
-  }
+
+//Define the class
+class Car 
+{
+  //Define the constructor()
+  constructor(model, milesPerGallon)
+  {
+    //Set model to this.model
+    this.model = model;
+    //Set mpg
+    this.milesPerGallon = milesPerGallon;
+    //Init the tank to 0
+    this.tank = 0;
+    //init the odometer to 0
+    this.odometer = 0;
+  };
+
+  //Define the fill method() pass in gallons
+  fill(gallons)
+  {
+    //Add gallons to what's already in the tank
+    this.tank += gallons;
+    //If the tank is empty...
+    if (this.tank == 0)
+    {
+      //...Print this
+      console.log("I ran out of fuel", "at",  "miles!")
+    }
+  };
+
+  //Define the drive method() pass in distance
+  dive(distance)
+  {
+    //Add miles to what's already on the odometer
+    this.odometer += distance;
+    //Declare gallonsUsed, assign the result of distance/mpg
+    const gallonsUsed = distance / this.milesPerGallon;
+    //Subtract gallonsUsed from the tank
+    this.tank -= gallonsUsed;
+  };
+
+
+}
   
   /*
     TASK 3
@@ -127,9 +167,26 @@ class Person
           + Speaking should return a phrase `Hello my name is {name}, I am from {location}`.
           + {name} and {location} of course come from the instance's own properties.
   */
- class Lambdasian {
-    
+
+//Define the class
+class Lambdasian 
+{
+  //Define the constructor, pass in lambdaObject
+  constructor(lambdaObject)
+  {
+    this.name = lambdaObject.name;
+    this.age = lambdaObject.age;
+    this.location = lambdaObject.location;
   }
+
+  //Define the speak() method
+  speak()
+  {
+    //Return the person's name and location in a string
+    return `Hello my name is ${this.name}, I am from ${this.location}`
+  }
+
+}
   
   /*
     TASK 4

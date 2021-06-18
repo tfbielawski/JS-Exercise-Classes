@@ -96,8 +96,6 @@ class Person
   }
 }
 
-
-  
   /*
     TASK 2
       - Write a Car class whose constructor initializes `model` and `milesPerGallon` from arguments.
@@ -133,31 +131,58 @@ class Car
   {
     //Add gallons to what's already in the tank
     this.tank += gallons;
-   
   }
 
   //Define the drive method() pass in distance
   drive(distance)
   {
-    //Increment the odometer
-    this.odometer += distance;
+    
     //Assign result of tank gallons * mpg
     const maximumRange = this.tank * this.milesPerGallon;
     //If distance is less than the max range...
-    if (distance < maximumRange)
+    if (this.tank * this.milesPerGallon > distance) 
     {
+      //Increment the odometer
+      this.odometer += distance;
       //...assign result of the distance / mpg to the tank
       this.tank -= distance / this.milesPerGallon;
     }
+
     //If distance is more than max range...
-    else if (distance >= maximumRange )
+    else 
     {
+      this.odometer += this.tank * this.milesPerGallon;
+      this.tank = 0;
       //...assign result of max range / mpg
-      this.tank -= maximumRange / this.milesPerGallon;
+      // this.tank -= maximumRange / this.milesPerGallon;
       //Return required string when tank is empty
       return `I ran out of fuel at ${this.odometer} miles!`
     }
   }
+
+
+  // drive(distance) 
+  // {
+  //   // there IS enough gas
+  //   if (this.tank * this.milesPerGallon > distance) 
+  //   {
+  //     this.odometer += distance;
+  //     this.tank = this.tank - distance / this.milesPerGallon;
+  //   }
+    
+  //   else 
+  //   {
+  //   this.odometer = this.odometer + this.tank * this.milesPerGallon;
+  //   this.tank = 0;
+    
+  //   // console.log(`I ran out of fuel at ${this.odometer} miles! Tank: ${this.tank}`);
+  //   return `I ran out of fuel at ${this.odometer} miles!`;
+  //   }
+  // } 
+
+
+
+
 
 }
   
@@ -324,7 +349,7 @@ class Student extends Lambdasian
    standUp(channel)
    {
      //Return the required string
-     return `${this.name} announces to ${channel}, @channel standy times!`
+     return `${this.name} announces to ${channel}, @channel standy times!`;
    }
   
    //Define the debugsCode() method

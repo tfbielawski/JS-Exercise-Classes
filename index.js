@@ -2,7 +2,7 @@
  * Tom Bielawski
  * Lambda Shcool WEB45
  * Unit 1, Module 4, Day 4
- * JS Classes
+ * JS-Exercise-Classes
  * injdex.js
  * 6/16/2021 
  * **/
@@ -136,22 +136,6 @@ class Car
    
   }
 
-  // //Define the drive method() pass in distance
-  // dive(distance)
-  // {
-  //   //Add miles to what's already on the odometer
-  //   this.odometer += distance;
-  //   //Declare gallonsUsed, assign the result of distance/mpg
-  //   const gallonsUsed = distance / this.milesPerGallon;
-  //   //Subtract gallonsUsed from the tank
-  //   this.tank -= gallonsUsed;
-  //   //If the tank is empty...
-  //   if (this.tank == 0)
-  //   {
-  //     //...Print this
-  //     return `I ran out of fuel ${this.odometer} miles!`;
-  //   }
-  // }
   //Define the drive method() pass in distance
   drive(distance)
   {
@@ -162,7 +146,6 @@ class Car
     //If distance is less than the max range...
     if (distance < maximumRange)
     {
-      
       //...assign result of the distance / mpg to the tank
       this.tank -= distance / this.milesPerGallon;
     }

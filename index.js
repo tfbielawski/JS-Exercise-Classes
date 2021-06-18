@@ -3,7 +3,7 @@
  * Lambda Shcool WEB45
  * Unit 1, Module 4, Day 4
  * JS-Exercise-Classes
- * injdex.js
+ * index.js
  * 6/16/2021 
  * **/
 
